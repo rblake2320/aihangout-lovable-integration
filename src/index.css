@@ -1,0 +1,228 @@
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI Hangout Design System - Futuristic Dark Theme */
+
+@layer base {
+  :root {
+    /* Core backgrounds - Deep space dark */
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    /* Cards & surfaces - Slightly elevated */
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover */
+    --popover: 222 47% 7%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Electric Cyan */
+    --primary: 190 100% 50%;
+    --primary-foreground: 222 47% 5%;
+
+    /* Secondary - Deep Violet */
+    --secondary: 263 70% 50%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted - Subdued backgrounds */
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Accent - Emerald for activity/success */
+    --accent: 160 84% 39%;
+    --accent-foreground: 222 47% 5%;
+
+    /* Destructive */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders & inputs */
+    --border: 222 30% 18%;
+    --input: 222 30% 15%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors for AI Hangout */
+    --glow-primary: 190 100% 50%;
+    --glow-secondary: 263 70% 50%;
+    --glow-accent: 160 84% 39%;
+    
+    /* AI Agent colors */
+    --ai-claude: 24 100% 50%;
+    --ai-gpt: 145 80% 42%;
+    --ai-local: 263 70% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(190 100% 50%) 0%, hsl(263 70% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(222 47% 10%) 0%, hsl(222 47% 6%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(190 100% 50% / 0.15) 0%, transparent 70%);
+    
+    /* Shadows with glow */
+    --shadow-glow-sm: 0 0 15px hsl(190 100% 50% / 0.3);
+    --shadow-glow-md: 0 0 30px hsl(190 100% 50% / 0.4);
+    --shadow-glow-lg: 0 0 60px hsl(190 100% 50% / 0.3);
+    --shadow-card: 0 4px 24px hsl(222 47% 0% / 0.5);
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 190 100% 50%;
+    --sidebar-primary-foreground: 222 47% 5%;
+    --sidebar-accent: 222 30% 12%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 222 30% 15%;
+    --sidebar-ring: 190 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Glowing border effect */
+  .glow-border {
+    @apply relative;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3),
+                inset 0 0 20px hsl(var(--primary) / 0.05);
+  }
+
+  .glow-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-[inherit] pointer-events-none;
+    background: linear-gradient(135deg, 
+      hsl(var(--primary) / 0.2) 0%, 
+      transparent 50%, 
+      hsl(var(--secondary) / 0.2) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 1px;
+  }
+
+  /* Subtle pulse animation for live indicators */
+  .pulse-live {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+    }
+    50% {
+      opacity: 0.7;
+      box-shadow: 0 0 20px hsl(var(--accent) / 0.8);
+    }
+  }
+
+  /* Neural network background pattern */
+  .neural-bg {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--secondary) / 0.03) 0%, transparent 50%);
+  }
+
+  /* Grid pattern overlay */
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+
+  /* AI Agent avatar glow */
+  .ai-avatar {
+    @apply relative rounded-full;
+  }
+
+  .ai-avatar::after {
+    content: '';
+    @apply absolute inset-0 rounded-full;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.4) 0%, transparent 70%);
+    filter: blur(8px);
+    z-index: -1;
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .card-hover:hover {
+    @apply border-primary/50;
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.2),
+                0 4px 24px hsl(222 47% 0% / 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Category badge styles */
+  .category-badge {
+    @apply px-3 py-1 rounded-full text-xs font-medium transition-all duration-200;
+    background: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .category-badge:hover {
+    background: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary) / 0.3);
+    color: hsl(var(--primary));
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
